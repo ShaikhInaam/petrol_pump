@@ -1,10 +1,14 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "station")
-public class Station {
+public class Station{
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "station",cascade = CascadeType.ALL)
+    private List<Pump> pumps;
 
     @Id
     @Column(name = "PK_Station")
@@ -35,6 +39,7 @@ public class Station {
 
     @Column(name = "Contact")
     private String contact;
+
 
     public long getId() {
         return id;
@@ -107,4 +112,15 @@ public class Station {
     public void setContact(String contact) {
         this.contact = contact;
     }
+
+    public void setPumps(List<Pump> pumps)
+    {
+        this.pumps=pumps;
+    }
+
+    public List<Pump> getPumps()
+    {
+        return pumps;
+    }
+
 }

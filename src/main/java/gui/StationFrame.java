@@ -1,7 +1,10 @@
 package gui;
 
+import entity.Pump;
+
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
+import java.util.List;
 
 /**
  *
@@ -12,14 +15,18 @@ public class StationFrame extends javax.swing.JFrame {
     /**
      * Creates new form StationFrame
      */
+
+    List<Pump> pumps;
+
     public StationFrame() {
+        pumps = MainFrame.list.get(0).getStation().getPumps();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         initComponents();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 
-        for(int i=1;i<10;i++)
+        for(int i=0;i<pumps.size();i++)
         {
-            model.addRow(new Object[]{"inaam","ishaque","shaikh"});
+            model.addRow(new Object[]{pumps.get(i).getId(),pumps.get(i).getName(),pumps.get(i).getDeviceId()});
         }
 
 
@@ -91,7 +98,7 @@ public class StationFrame extends javax.swing.JFrame {
 
         jLabel2.setText("No of Pumps");
 
-        jLabel3.setText("2");
+        jLabel3.setText(""+MainFrame.list.get(0).getStation().getNoOfPumps());
 
         jLabel4.setText("Petrol Liter");
 
@@ -99,7 +106,7 @@ public class StationFrame extends javax.swing.JFrame {
 
         jLabel6.setText("Petrol Price");
 
-        jLabel7.setText("350 Rupees");
+        jLabel7.setText(MainFrame.list.get(0).getStation().getPetrolRate()+" Rupees");
 
         jLabel8.setText("Diesel Liter");
 
@@ -107,7 +114,7 @@ public class StationFrame extends javax.swing.JFrame {
 
         jLabel10.setText("Diesel Price");
 
-        jLabel11.setText("546 Rupees");
+        jLabel11.setText(MainFrame.list.get(0).getStation().getDieselRate()+" Rupees");
 
         jLabel12.setText("Octane Liter");
 
@@ -115,7 +122,7 @@ public class StationFrame extends javax.swing.JFrame {
 
         jLabel14.setText("Octane Price");
 
-        jLabel15.setText("0 Rupees");
+        jLabel15.setText(MainFrame.list.get(0).getStation().getHiOctaneRate()+" Rupees");
 
         jLabel16.setText("Total Price");
 
@@ -126,15 +133,15 @@ public class StationFrame extends javax.swing.JFrame {
 
         jLabel19.setText("Owner Name");
 
-        jLabel20.setText("jLabel20");
+        jLabel20.setText(MainFrame.list.get(0).getCname());
 
         jLabel21.setText("Pump Name");
 
-        jLabel22.setText("jLabel22");
+        jLabel22.setText(MainFrame.list.get(0).getStation().getName()+" station");
 
         jLabel23.setText("Contact");
 
-        jLabel24.setText("jLabel24");
+        jLabel24.setText(MainFrame.list.get(0).getStation().getContact());
 
         jLabel25.setText("Address");
 
@@ -142,15 +149,15 @@ public class StationFrame extends javax.swing.JFrame {
 
         jLabel27.setText("Petrol Rate");
 
-        jLabel28.setText("jLabel28");
+        jLabel28.setText(MainFrame.list.get(0).getStation().getPetrolRate()+" per liter");
 
         jLabel29.setText("Diesel Rate");
 
-        jLabel30.setText("jLabel30");
+        jLabel30.setText(MainFrame.list.get(0).getStation().getDieselRate()+" per liter");
 
         jLabel31.setText("Hi Octane Rate");
 
-        jLabel32.setText("jLabel32");
+        jLabel32.setText(MainFrame.list.get(0).getStation().getHiOctaneRate()+" per liter");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {

@@ -13,6 +13,7 @@
 
         <mapping class="entity.Client" />
         <mapping class="entity.Station"/>
+        <mapping class="entity.Pump"/>
 
     </session-factory>
 </hibernate-configuration>
